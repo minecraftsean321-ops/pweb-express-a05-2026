@@ -1,0 +1,37 @@
+{
+  "name": "pweb-express-a05-2026",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/minecraftsean321-ops/pweb-express-a05-2026#readme",
+  "bugs": {
+    "url": "https://github.com/minecraftsean321-ops/pweb-express-a05-2026/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minecraftsean321-ops/pweb-express-a05-2026.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@prisma/adapter-neon": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "prisma": "^7.10.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

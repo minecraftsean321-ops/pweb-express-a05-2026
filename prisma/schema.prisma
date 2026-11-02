@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  TANK
+  FIGHTER
+  ASSASSIN
+  MAGE
+  MARKSMAN
+  SUPPORT
+}
+
+enum Lane {
+  EXP
+  GOLD
+  MID
+  JUNGLE
+  ROAM
+}
+
+enum Rarity {
+  COMMON
+  EXCEPTIONAL
+  DELUXE
+  EXQUISITE
+  GRAND
+  SUPREME
+}
+
+enum Currency {
+  BP
+  DIAMOND
+}
+
+model Hero {
+  id           Int          @id @default(autoincrement())
+  name         String       @unique
+  role         Role
+  lane         Lane
+  releaseYear  Int
+  priceBP      Int
+  priceDiamond Int
+  skins        Skin[]
+  playerHeroes PlayerHero[]
+}
+
+model Skin {
+  id           Int    @id @default(autoincrement())
+  name         String
+  rarity       Rarity
+  priceDiamond Int
+  heroId       Int
+  hero         Hero   @relation(fields: [heroId], references: [id], onDelete: Cascade)
+}
+
+model Player {
+  id           Int          @id @default(autoincrement())
+  nickname     String       @unique
+  bp           Int          @default(10000)
+  diamond      Int          @default(0)
+  createdAt    DateTime     @default(now())
+  playerHeroes PlayerHero[]
+}
+
+model PlayerHero {
+  id        Int      @id @default(autoincrement())
+  playerId  Int
+  heroId    Int
+  currency  Currency
+  pricePaid Int
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  hero      Hero     @relation(fields: [heroId], references: [id])
+
+  @@unique([playerId, heroId])
+}
