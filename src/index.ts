@@ -1,5 +1,6 @@
 import express from "express";
 import { globalErrorHandler, logger, notFoundHandler } from "./middlewares/logger";
+import heroRouter from './routes/hero';
 
 const app = express();
 
@@ -16,6 +17,7 @@ const PORT = 3000;
 
 app.use(notFoundHandler);
 app.use(globalErrorHandler);
+app.use('/api/heroes', heroRouter);
 
 app.listen(PORT, (error?: Error) => {
   if (error) throw error; 
