@@ -19,7 +19,8 @@ router.get('/', async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string, 10) || 1;
   const limit = parseInt(req.query.limit as string, 10) || 10;
   const heroId = req.query.heroId as string;
-  const rarity = req.query.rarity as string;
+  // Tangkap parameter dan otomatis ubah menjadi huruf kapital
+  const rarity = req.query.rarity ? (req.query.rarity as string).toUpperCase() : undefined;
 
   const skip = (page - 1) * limit;
   const where: Prisma.SkinWhereInput = {};

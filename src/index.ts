@@ -17,10 +17,11 @@ app.get("/health", (_req, res) => {
 
 const PORT = 3000;
 
-app.use(notFoundHandler);
-app.use(globalErrorHandler);
 app.use('/api/heroes', heroRouter);
 app.use('/api/skins', skinRouter);
+app.use(notFoundHandler);
+app.use(globalErrorHandler);
+
 
 app.listen(PORT, (error?: Error) => {
   if (error) throw error; 
