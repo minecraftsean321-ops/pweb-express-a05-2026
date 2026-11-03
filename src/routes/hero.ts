@@ -100,3 +100,4 @@ router.post('/', async (req: Request, res: Response) => {
 });
 
 export default router;
+
